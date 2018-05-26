@@ -3,6 +3,7 @@ import router from './router';
 import App from './App';
 
 import 'assets/css/app.styl';
+import 'assets/css/animations.styl';
 
 /* eslint-disable-next-line no-new */
 new Vue({
