@@ -1,6 +1,6 @@
 <template>
   <svg :alt="alt">
-    <use v-attr="attrObj" :href="path" />
+    <use :href="path" :xlink:href="path" />
   </svg>
 </template>
 
@@ -20,12 +20,6 @@ export default {
     path () {
       return `/static/icons/icons.svg#${this.svgId}`;
     },
-    attrObj () {
-      return {
-        'xlink:href': this.path,
-        'href': this.path
-      };
-    }
   }
 };
 </script>
