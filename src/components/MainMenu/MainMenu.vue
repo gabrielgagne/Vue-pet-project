@@ -1,9 +1,7 @@
 <template>
   <div>
     <router-link to="/settings" class="cog-animation">
-      <icon-dynamic>
-        <icon-cog />
-      </icon-dynamic>
+      <icon-static svg-id="icon-cog" alt="Settings" />
     </router-link>
     <ul>
       <li is="MainMenuItem" navigate-to="/">
@@ -32,23 +30,11 @@
 
 <script>
 import MainMenuItem from 'components/MainMenu/MainMenuItem';
-import IconDynamic from 'components/Icons/IconDynamic';
-import IconCog from 'components/Icons/IconCog';
-import IconUser from 'components/Icons/IconUser';
-import IconInfo from 'components/Icons/IconInfo';
-import IconNumberedList from 'components/Icons/IconNumberedList';
-import IconHome from 'components/Icons/IconHome';
 import IconStatic from 'components/Icons/IconStatic';
 
 export default {
   components: {
     MainMenuItem,
-    IconDynamic,
-    IconCog,
-    IconUser,
-    IconInfo,
-    IconNumberedList,
-    IconHome,
     IconStatic
   },
   props: {}
