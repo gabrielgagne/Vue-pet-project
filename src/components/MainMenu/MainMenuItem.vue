@@ -1,7 +1,7 @@
 <template>
   <router-link :to="navigateTo" class="main-menu-item">
-    <span>
-      <icon-static :svg-id="icon" :alt="altText" /><slot />
+    <span class="main-menu-item__wrapper">
+      <icon-static :svg-id="icon" :alt="altText" class="main-menu-item__icon" /><slot />
     </span>
   </router-link>
 </template>
@@ -32,4 +32,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.main-menu-item
+  color inherit
+  &__wrapper
+    display flex
+    align-items center
+
+  &__icon
+    margin-right $paddingBase
 </style>

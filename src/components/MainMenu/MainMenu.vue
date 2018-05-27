@@ -1,14 +1,17 @@
 <template>
   <div v-click-outside="clicOutside" class="main-menu">
-    <icon-static class="main-menu__toggle"
-                 svg-id="icon-list"
-                 alt="Menu"
-                 @click.native="toggle()" />
+    <span class="main-menu__header">
+      <icon-static class="main-menu__toggle"
+                   svg-id="icon-list"
+                   alt="Menu"
+                   @click.native="toggle()" />
+      <router-link to="/">
+        <img class="main-menu__logo" src="/static/img/logo.png" >
+      </router-link>
+    </span>
     <transition :duration="{enter:800, leave: 400}" name="menu">
       <div v-show="opened" class="main-menu__container">
-        <router-link to="/">
-          <img class="main-menu__logo" src="/static/img/logo.png" >
-        </router-link>
+
         <router-link to="/settings" class="main-menu__settings-icon cog-animation">
           <icon-static svg-id="icon-cog" alt="Settings" />
         </router-link>
@@ -79,14 +82,24 @@ export default {
   left 0
   z-index 998
 
-  &__toggle
+  &__header
     position absolute
     top $menuTogglePosition
     left $menuTogglePosition
+    z-index 999
+    display flex
+    align-items center
+
+  &__logo
+    flex-grow 0
+    height $menuLogoSize
+    width auto
+    margin-left 1rem
+
+  &__toggle
     width $menuToggleSize
     height $menuToggleSize
     cursor pointer
-    z-index 999
 
   &__container
     position absolute
@@ -96,12 +109,6 @@ export default {
     flex-direction column
     padding $layoutTopPadding 0
     background-color lightgreen
-
-  &__logo
-    flex-grow 0
-    width auto
-    height 100px
-    width 100px
 
   &__settings-icon
     position absolute
@@ -115,8 +122,12 @@ export default {
 
   &__item
     padding $paddingSmall
-    background-color lightgreen
+    background-color darken(lightgreen, 50%)
+    margin-bottom $paddingSmall
     transform-origin top left
+
+    &:last-child
+      margin-bottom 0
 
     a
       display block

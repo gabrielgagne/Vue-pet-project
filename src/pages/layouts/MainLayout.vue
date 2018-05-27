@@ -28,5 +28,4 @@ export default {
 <style lang="stylus" scoped>
 .main-layout
   padding-top $layoutTopPadding
-  color red
 </style>
