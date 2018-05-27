@@ -1,6 +1,17 @@
 html, body
   min-height 100%
 
+body
+  .main-layout__content
+    overflow-x: hidden;
+    transform translateX(0)
+    transition transform 0.4s ease
+
+  &.menu-opened
+    .main-layout__content
+      transition-duration 0.8s
+      transform translateX($menuWidth / 2)
+
 svg
   width 1em
   height 1em

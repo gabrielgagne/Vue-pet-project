@@ -1,5 +1,5 @@
 <template>
-  <div v-click-outside="close" class="main-menu">
+  <div v-click-outside="clicOutside" class="main-menu">
     <icon-static class="main-menu__toggle"
                  svg-id="icon-list"
                  alt="Menu"
@@ -50,12 +50,23 @@ export default {
     }
   },
   methods: {
-    toggle: function() {
-      this.opened = !this.opened;
+    toggle() {
+      this.opened ? this.close() : this.open();
     },
-    close: function() {
-      if (this.opened) {
-        this.opened = false;
+    close() {
+      this.opened = false;
+      document.body.className = document.body.className.replace(
+        'menu-opened',
+        ''
+      );
+    },
+    open() {
+      this.opened = true;
+      document.body.className = document.body.className + ' menu-opened';
+    },
+    clicOutside(event) {
+      if (event.button === 0) {
+        this.close();
       }
     }
   }
@@ -66,6 +77,7 @@ export default {
   position fixed
   top 0
   left 0
+  z-index 998
 
   &__toggle
     position absolute
@@ -78,9 +90,8 @@ export default {
 
   &__container
     position absolute
-    z-index 998
     height 100vh
-    width 350px
+    width $menuWidth
     display flex
     flex-direction column
     padding $layoutTopPadding 0
@@ -114,22 +125,22 @@ export default {
       margin-right $paddingBase
 
   .menu-enter-to, .menu-leave
-    opacity 1
+    transform translateX(0)
 
     .main-menu__item
       transform rotate(0deg)
 
   .menu-leave-to, .menu-enter
-    opacity 0
+    transform translateX(- $menuWidth)
 
     .main-menu__item
       transform rotate(150deg)
 
   .menu-leave-active
-    transition opacity .4s
+    transition transform 0.4s
 
     .main-menu__item
-      transition transform .2s
+      transition transform 0.2s
 
       &:nth-child(1)
         transition-delay 0.2s
@@ -147,10 +158,10 @@ export default {
         transition-delay 0s
 
   .menu-enter-active
-    transition opacity .8s
+    transition transform 0.8s
 
     .main-menu__item
-      transition transform .4s
+      transition transform 0.4s
 
       &:nth-child(1)
         transition-delay 0s
