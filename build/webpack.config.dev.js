@@ -3,10 +3,11 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
+const utils = require('./utils')
 
 const HOST = 'localhost'
 const PORT = 8080
-
+console.log(utils.resolve('assets/css/variables.styl'))
 module.exports = merge(baseConfig, {
   mode: 'development',
 
@@ -39,7 +40,12 @@ module.exports = merge(baseConfig, {
         use: [
           'vue-style-loader',
           'css-loader',
-          'stylus-loader'
+          {
+            loader: 'stylus-loader',
+            options: {
+              import: [utils.resolve('assets/css/variables.styl')],
+            },
+          },
         ]
       }
     ]

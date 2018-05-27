@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import vClickOutside from 'v-click-outside';
 
 import MainLayout from 'pages/layouts/MainLayout';
 import Home from 'pages/Home';
@@ -9,6 +10,7 @@ import Settings from 'pages/Settings';
 import About from 'pages/About';
 
 Vue.use(Router);
+Vue.use(vClickOutside);
 
 const routes = [
   {

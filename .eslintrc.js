@@ -28,6 +28,7 @@ module.exports = {
         "max": 3,
         "allowFirstLine": true
       }
-    }]
+    }],
+    'space-before-function-paren': "off"
   }
 }

@@ -17,9 +17,9 @@ export default {
     }
   },
   computed: {
-    path () {
+    path() {
       return `/static/icons/icons.svg#${this.svgId}`;
-    },
+    }
   }
 };
 </script>

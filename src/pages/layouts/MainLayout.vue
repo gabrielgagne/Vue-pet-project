@@ -1,7 +1,7 @@
 <template>
-  <div id="page-layout">
+  <div class="main-layout">
     <main-menu />
-    <div class="main-content">
+    <div class="main-layout__content">
       <router-view v-if="!isRoot" />
       <home v-if="isRoot" />
     </div>
@@ -24,3 +24,9 @@ export default {
   }
 };
 </script>
+
+<style lang="stylus" scoped>
+.main-layout
+  padding-top $layoutTopPadding
+  color red
+</style>

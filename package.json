@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "popmotion": "^8.2.2",
+    "v-click-outside": "^1.0.4",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },
