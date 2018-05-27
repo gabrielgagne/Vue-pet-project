@@ -67,6 +67,7 @@ export default {
       this.opened = true;
       document.body.className = document.body.className + ' menu-opened';
     },
+    // no coverage
     clicOutside(event) {
       if (event.button === 0) {
         this.close();
