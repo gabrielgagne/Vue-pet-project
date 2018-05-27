@@ -83,7 +83,7 @@ export default {
     width 350px
     display flex
     flex-direction column
-    padding 'calc(%s + %s * 2)' % ($menuToggleSize $menuTogglePosition) 0
+    padding $layoutTopPadding 0
     background-color lightgreen
 
   &__logo
@@ -96,7 +96,6 @@ export default {
     position absolute
     top $paddingSmall
     right $paddingSmall
-    fill $someColor
 
   &__items
     display flex
