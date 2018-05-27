@@ -77,6 +77,11 @@ module.exports = {
       from: utils.resolve('static'),
       to: utils.resolve('dist/static'),
       toType: 'dir'
+    }]),
+    new CopyWebpackPlugin([{
+      from: utils.resolve('build/serverRoot'),
+      to: utils.resolve('dist/'),
+      toType: 'dir'
     }])
   ]
 }
