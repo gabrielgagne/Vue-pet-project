@@ -9,7 +9,7 @@ describe('WelcomeMessage.vue', () => {
       propsData: { name }
     });
 
-    expect(wrapper.text()).toBe(
+    expect(wrapper.find('h3').text()).toBe(
       'Hello tester from my Vue.js page, built with Webpack 4!'
     );
   });
