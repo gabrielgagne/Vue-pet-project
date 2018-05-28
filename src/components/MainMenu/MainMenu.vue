@@ -90,6 +90,9 @@ export default {
     z-index 999
     display flex
     align-items center
+    border 1px solid grey
+    border-radius $paddingBase
+    padding $menuTogglePaddingVertical $menuTogglePaddingHorizontal
 
   &__logo
     flex-grow 0

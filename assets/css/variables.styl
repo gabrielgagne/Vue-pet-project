@@ -21,6 +21,9 @@ $paddingBig = 1.5rem
 $menuWidth = 350px
 $menuToggleSize = $paddingBig
 $menuLogoSize = $paddingBig * 2
-$menuTogglePosition = $paddingBase
-$layoutTopPadding = 'calc(%s + %s * 2)' % ($menuLogoSize $menuTogglePosition)
-$layoutleftPadding = 'calc(%s + %s * 2)' % ($menuLogoSize $menuTogglePosition)
+$menuTogglePosition = $paddingSmall
+$menuTogglePaddingVertical = $paddingSmall
+$menuTogglePaddingHorizontal = $paddingBase
+
+$layoutTopPadding = 'calc(%s + %s * 2 + %s * 2)' % ($menuLogoSize $menuTogglePosition $menuTogglePaddingVertical)
+$layoutleftPadding = 'calc(%s + %s * 2 + $s * 2)' % ($menuLogoSize $menuTogglePosition $menuTogglePaddingHorizontal)
