@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="navigateTo" class="main-menu-item">
+  <router-link :to="navigateTo" :title="altText" class="main-menu-item">
     <span class="main-menu-item__wrapper">
       <icon-static :svg-id="icon" :alt="altText" class="main-menu-item__icon" /><slot />
     </span>
