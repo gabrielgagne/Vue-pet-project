@@ -34,6 +34,7 @@ module.exports = merge(baseConfig, {
           {
             loader: 'stylus-loader',
             options: {
+              use: [require('nib')()],
               import: [utils.resolve('assets/css/variables.styl')],
             },
           },

@@ -1,7 +1,7 @@
 <template>
   <div class="page-home">
     <section class="page-home__presentation">
-      <h1>{{ "WebApp name" }}</h1>
+      <h1 class="page-home__presentation-title">{{ "WebApp name" }}</h1>
       <span>{{ "Keep track of every frame" }}</span>
     </section>
     <welcome-message name="World" />
@@ -19,11 +19,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import 'nib'
 .page-home
-  background-color white
+  background linear-gradient(top, $grey, $dark);
+  clearfix()
+  border-radius: 1px 2px / 3px 4px;
 
   &__presentation
     display flex
+    flex-direction column
+    align-items center
 
   &__presentation-title
     font-size 4em

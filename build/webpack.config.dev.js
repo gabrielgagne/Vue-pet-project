@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
 const utils = require('./utils')
+const stylusloader = require('stylus-loader')
 
 const HOST = 'localhost'
 const PORT = 8080
@@ -43,6 +44,7 @@ module.exports = merge(baseConfig, {
           {
             loader: 'stylus-loader',
             options: {
+              use: [require('nib')()],
               import: [utils.resolve('assets/css/variables.styl')],
             },
           },
@@ -52,6 +54,7 @@ module.exports = merge(baseConfig, {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ]
+  
 })
