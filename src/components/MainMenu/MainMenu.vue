@@ -1,18 +1,17 @@
 <template>
-  <div v-click-outside="clicOutside" class="main-menu">
+  <div v-click-outside="clicOutside" :class="{ opened }" class="main-menu">
     <span class="main-menu__header">
       <icon-static class="main-menu__toggle"
                    svg-id="icon-list"
                    alt="Menu"
                    @click.native="toggle()" />
-      <router-link to="/">
+      <router-link to="/" title="Home">
         <img class="main-menu__logo" src="/static/img/logo.png" >
       </router-link>
     </span>
     <transition :duration="{enter:800, leave: 400}" name="menu">
       <div v-show="opened" class="main-menu__container">
-
-        <router-link to="/settings" class="main-menu__settings-icon cog-animation">
+        <router-link to="/settings" class="main-menu__settings-icon cog-animation" title="Settings">
           <icon-static svg-id="icon-cog" alt="Settings" />
         </router-link>
         <ul class="main-menu__items">
@@ -88,16 +87,22 @@ export default {
     top $menuTogglePosition
     left $menuTogglePosition
     z-index 999
+    padding $menuTogglePaddingVertical $menuTogglePaddingHorizontal
     display flex
     align-items center
-    border 1px solid grey
+    transition: all .4s ease
     border-radius $paddingBase
-    padding $menuTogglePaddingVertical $menuTogglePaddingHorizontal
+    fill: $brand
+    box-shadow: 0 0 1px 1px $brand inset
+
+    ^[0].opened &
+      fill: $light
+      box-shadow: 0 0 1px 1px $light inset
 
   &__logo
-    flex-grow 0
     height $menuLogoSize
     width auto
+    flex-grow 0
     margin-left 1rem
 
   &__toggle
@@ -112,12 +117,15 @@ export default {
     display flex
     flex-direction column
     padding $layoutTopPadding 0
-    background-color lightgreen
+    background-color $brand
 
   &__settings-icon
     position absolute
-    top $paddingSmall
-    right $paddingSmall
+    top $paddingBase
+    right $paddingBase
+    svg
+      width $fontSizeBig * 1.5
+      height $fontSizeBig * 1.5
 
   &__items
     display flex
@@ -125,15 +133,24 @@ export default {
     padding-left 0
 
   &__item
-    padding $paddingSmall
-    background-color darken(lightgreen, 50%)
-    margin-bottom $paddingSmall
-    transform-origin top left
+    font-size: $fontSizeBig
+    border-bottom 1px solid $light
+    fill $light
+    font-weight bolder
+    text-transform
+    transform-origin top 50%
 
-    &:last-child
-      margin-bottom 0
+    &:hover
+      background-color darken($brand, 15%)
+      a
+        text-decoration: none
+
+    &:first-child
+      border-top 1px solid $light
+      margin-top $paddingBig
 
     a
+      padding $paddingBase
       display block
 
     svg
@@ -143,13 +160,15 @@ export default {
     transform translateX(0)
 
     .main-menu__item
-      transform rotate(0deg)
+      transform rotateX(0deg)
+      //transform skewY(0deg)
 
   .menu-leave-to, .menu-enter
     transform translateX(- $menuWidth)
 
     .main-menu__item
-      transform rotate(150deg)
+      transform rotateX(90deg)
+      //transform skewY(90deg)
 
   .menu-leave-active
     transition transform 0.4s

@@ -1,5 +1,5 @@
 <template>
-  <div class="full-width center-content">
+  <div >
 
     <welcome-message name="pro" />
   </div>

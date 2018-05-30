@@ -1,8 +1,14 @@
 html
-  font-family 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
   overflow-x hidden
+  max-width 100%
+  color $light
 
 body
+  max-width 100%
+  background $dark
+  color $light
+  fill $light
+  overflow: hidden //let the main layout content bother with scroll
   .main-layout__content
     transform translateX(0)
     transition transform 0.4s ease
@@ -11,6 +17,11 @@ body
     .main-layout__content
       transition-duration 0.8s
       transform translateX(($menuWidth / 2))
+
+  a
+    color: $brand
+    &:hover
+      color: lighten($brand, 15%)
 
 svg
   width 1em

@@ -27,14 +27,15 @@ export default {
 
 <style lang="stylus" scoped>
 .main-layout
-  padding $layoutTopPadding $paddingSmall
   display flex
   justify-content center
-  border 1px solid black
-  min-height 100vh
+  min-height 100v
+
+  &__content
+    padding $layoutTopPadding $menuTogglePosition
 
   .fade-page-leave-active, .fade-page-enter-active
-    transition transform 0.3s ease-out, opacity 0.2s ease-out
+    transition transform 0.3s ease-out, opacity 0.3s ease-out
     transform-origin: 50% 50%
 
   .fade-page-enter-to, .fade-page-leave
@@ -42,11 +43,11 @@ export default {
     opacity 1
 
   .fade-page-enter
-    transform scale(1.25)
-    opacity 0.2
+    transform scale(1.1)
+    opacity 0.3
 
   .fade-page-leave-to
-    transform scale(0.75)
-    opacity 0.2
+    transform scale(0.9)
+    opacity 0
 
 </style>
