@@ -27,10 +27,12 @@ export default {
 
 <style lang="stylus" scoped>
 .main-layout
-  padding $layoutTopPadding $menuTogglePosition
   display flex
   justify-content center
-  min-height 100vh
+  min-height 100v
+
+  &__content
+    padding $layoutTopPadding $menuTogglePosition
 
   .fade-page-leave-active, .fade-page-enter-active
     transition transform 0.3s ease-out, opacity 0.3s ease-out

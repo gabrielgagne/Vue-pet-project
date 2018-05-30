@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="full-width center-content">
+    <div >
       <welcome-message name="about" />
     </div>
   </div>
