@@ -34,10 +34,18 @@ export default {
 <style lang="stylus" scoped>
 .main-menu-item
   color inherit
+  text-decoration none
+  padding $paddingBase
+  display block
+
   &__wrapper
     display flex
     align-items center
 
   &__icon
+    fill $light
     margin-right $paddingBase
+
+  &:hover
+    text-decoration none
 </style>
