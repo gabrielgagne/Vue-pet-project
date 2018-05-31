@@ -1,10 +1,9 @@
 <template>
   <div v-click-outside="clicOutside" :class="{ opened }" class="main-menu">
     <span class="main-menu__header">
-      <icon-static class="main-menu__toggle"
-                   svg-id="icon-list"
-                   alt="Menu"
-                   @click.native="toggle()" />
+      <div class="main-menu__toggle-wrapper" @click="toggle()">
+        <span class="main-menu__toggle-icon" />
+      </div>
       <router-link to="/" title="Home">
         <img class="main-menu__logo" src="/static/img/logo.png" >
       </router-link>
@@ -53,6 +52,7 @@ export default {
   },
   methods: {
     toggle() {
+      console.log('TEST');
       this.opened ? this.close() : this.open();
     },
     close() {
@@ -76,6 +76,10 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
+$menuToggleBarHeight = 5px
+$menuToggleBarWidth = 3rem
+$menuToggleBarSpacing = 10px
+
 .main-menu
   position fixed
   top 0
@@ -90,25 +94,16 @@ export default {
     padding $menuTogglePaddingVertical $menuTogglePaddingHorizontal
     display flex
     align-items center
-    transition: all .4s ease
+    transition all 0.4s ease
     border-radius $paddingBase
-    fill: $brand
-    box-shadow: 0 0 1px 1px $brand inset
-
-    ^[0].opened &
-      fill: $light
-      box-shadow: 0 0 1px 1px $light inset
+    fill $brand
+    box-shadow 0 0 1px 1px $brand inset
 
   &__logo
     height $menuLogoSize
     width auto
     flex-grow 0
     margin-left 1rem
-
-  &__toggle
-    width $menuToggleSize
-    height $menuToggleSize
-    cursor pointer
 
   &__container
     position absolute
@@ -123,6 +118,7 @@ export default {
     position absolute
     top $paddingBase
     right $paddingBase
+
     svg
       width $fontSizeBig * 1.5
       height $fontSizeBig * 1.5
@@ -133,17 +129,16 @@ export default {
     padding-left 0
 
   &__item
-    font-size: $fontSizeBig
+    font-size $fontSizeBig
     border-bottom 1px solid $light
-    fill $light
     font-weight bolder
-    text-transform
     transform-origin top 50%
 
     &:hover
       background-color darken($brand, 15%)
+
       a
-        text-decoration: none
+        text-decoration none
 
     &:first-child
       border-top 1px solid $light
@@ -154,6 +149,7 @@ export default {
       display block
 
     svg
+      fill $dark
       margin-right $paddingBase
 
   .menu-enter-to, .menu-leave
@@ -161,14 +157,12 @@ export default {
 
     .main-menu__item
       transform rotateX(0deg)
-      //transform skewY(0deg)
 
   .menu-leave-to, .menu-enter
     transform translateX(- $menuWidth)
 
     .main-menu__item
       transform rotateX(90deg)
-      //transform skewY(90deg)
 
   .menu-leave-active
     transition transform 0.4s
@@ -211,4 +205,46 @@ export default {
 
       &:nth-child(5)
         transition-delay 0.4s
+
+  &__toggle-wrapper
+    height 'calc(2 * %s + 3 * %s)' % ($menuToggleBarSpacing $menuToggleBarHeight)
+    width $menuToggleBarWidth
+    display flex
+    align-items center
+    cursor pointer
+
+  &__toggle-icon, &__toggle-icon:before, &__toggle-icon:after
+    width $menuToggleBarWidth
+    height $menuToggleBarHeight
+    background $brand
+    border-radius 5px
+    transition 0.4s
+    cursor pointer
+
+  &__toggle-icon
+    position relative
+    border-radius 5px
+    transition 0.6s
+
+    &:before
+      content ''
+      position absolute
+      transform 'translateY(-%s)' % $menuToggleBarSpacing
+
+    &:after
+      content ''
+      position absolute
+      transform 'translateY(%s)' % $menuToggleBarSpacing
+
+    ^[0].opened &
+      width 0px
+      background-color $light
+
+      &:before
+        background-color $light
+        transform rotate(45deg) translate(0px)
+
+      &:after
+        background-color $light
+        transform rotate(-45deg) translate(0px)
 </style>
