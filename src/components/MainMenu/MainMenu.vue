@@ -137,20 +137,9 @@ $menuToggleBarSpacing = 10px
     &:hover
       background-color darken($brand, 15%)
 
-      a
-        text-decoration none
-
     &:first-child
       border-top 1px solid $light
       margin-top $paddingBig
-
-    a
-      padding $paddingBase
-      display block
-
-    svg
-      fill $dark
-      margin-right $paddingBase
 
   .menu-enter-to, .menu-leave
     transform translateX(0)
