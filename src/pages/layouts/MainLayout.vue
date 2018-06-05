@@ -26,28 +26,14 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import 'animations'
+
 .main-layout
   display flex
   justify-content center
   min-height 100v
+  fade-scale-animation()
 
   &__content
     padding $layoutTopPadding $menuTogglePosition
-
-  .fade-page-leave-active, .fade-page-enter-active
-    transition transform 0.3s ease-out, opacity 0.3s ease-out
-    transform-origin: 50% 50%
-
-  .fade-page-enter-to, .fade-page-leave
-    transform: scale(1)
-    opacity 1
-
-  .fade-page-enter
-    transform scale(1.1)
-    opacity 0.3
-
-  .fade-page-leave-to
-    transform scale(0.9)
-    opacity 0
-
 </style>
