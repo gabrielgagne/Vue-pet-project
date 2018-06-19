@@ -28,7 +28,6 @@ export default {
 @import 'nib'
 
 .page-home
-  background linear-gradient(top, $grey, $dark)
   clearfix()
   border-radius 1px 2px / 3px 4px
 
