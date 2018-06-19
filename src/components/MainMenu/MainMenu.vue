@@ -8,7 +8,7 @@
         <img class="main-menu__logo" src="/static/img/logo.png" >
       </router-link>
     </span>
-    <transition :duration="{enter:800, leave: 400}" name="menu">
+    <transition :duration="{enter:800, leave: 800}" name="menu">
       <div v-show="opened" class="main-menu__container">
         <router-link to="/settings" class="main-menu__settings-icon cog-animation" title="Settings">
           <icon-static svg-id="icon-cog" alt="Settings" />
@@ -113,6 +113,7 @@ $menuToggleBarSpacing = 10px
     flex-direction column
     padding $layoutTopPadding 0
     background-color $brand
+    box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75)
 
   &__settings-icon
     position absolute
@@ -127,12 +128,16 @@ $menuToggleBarSpacing = 10px
     display flex
     flex-direction column
     padding-left 0
+    overflow hidden
+    align-items center
+    padding: 0 $paddingBase
 
   &__item
+    width 100%;
+    list-style-type none
     font-size $fontSizeBig
     border-bottom 1px solid $light
     font-weight bolder
-    transform-origin top 50%
 
     &:hover
       background-color darken($brand, 15%)
@@ -145,55 +150,26 @@ $menuToggleBarSpacing = 10px
     transform translateX(0)
 
     .main-menu__item
-      transform rotateX(0deg)
+      transform translateX(0)
 
   .menu-leave-to, .menu-enter
     transform translateX(- $menuWidth)
+    box-shadow: 5px 0px 36px 7px rgba(0,0,0,0)
 
     .main-menu__item
-      transform rotateX(90deg)
+      transform translateX($menuWidth * 2)
 
   .menu-leave-active
-    transition transform 0.4s
+    transition transform 0.8s, box-shadow 0.8s
 
     .main-menu__item
-      transition transform 0.2s
-
-      &:nth-child(1)
-        transition-delay 0.2s
-
-      &:nth-child(2)
-        transition-delay 0.15s
-
-      &:nth-child(3)
-        transition-delay 0.1s
-
-      &:nth-child(4)
-        transition-delay 0.05s
-
-      &:nth-child(5)
-        transition-delay 0s
+      transition transform 0.8s
 
   .menu-enter-active
-    transition transform 0.8s
+    transition transform 0.8s, box-shadow 0.8s
 
     .main-menu__item
-      transition transform 0.4s
-
-      &:nth-child(1)
-        transition-delay 0s
-
-      &:nth-child(2)
-        transition-delay 0.1s
-
-      &:nth-child(3)
-        transition-delay 0.2s
-
-      &:nth-child(4)
-        transition-delay 0.3s
-
-      &:nth-child(5)
-        transition-delay 0.4s
+      transition transform 0.8s
 
   &__toggle-wrapper
     height 'calc(2 * %s + 3 * %s)' % ($menuToggleBarSpacing $menuToggleBarHeight)
@@ -207,13 +183,13 @@ $menuToggleBarSpacing = 10px
     height $menuToggleBarHeight
     background $brand
     border-radius 5px
-    transition 0.4s
+    transition background-color 0.4s, transform 0.4s, width 0.4s
     cursor pointer
 
   &__toggle-icon
     position relative
     border-radius 5px
-    transition 0.6s
+    opacity 1
 
     &:before
       content ''
@@ -227,7 +203,7 @@ $menuToggleBarSpacing = 10px
 
     ^[0].opened &
       width 0px
-      background-color $light
+      background-color rgba($light, 50%)
 
       &:before
         background-color $light
