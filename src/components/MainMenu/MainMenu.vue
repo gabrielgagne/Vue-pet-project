@@ -96,29 +96,28 @@ $menuToggleBarSpacing = 10px
     align-items center
     transition all 0.4s ease
     border-radius $paddingBase
-    fill $brand
     box-shadow 0 0 1px 1px $brand inset
 
   &__logo
     height $menuLogoSize
     width auto
-    flex-grow 0
     margin-left 1rem
 
   &__container
-    position absolute
-    height 100vh
+    min-height 100vh
     width $menuWidth
     display flex
     flex-direction column
     padding $layoutTopPadding 0
     background-color $brand
     box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75)
+    overflow-x hidden
 
   &__settings-icon
     position absolute
     top $paddingBase
     right $paddingBase
+    fill: $light
 
     svg
       width $fontSizeBig * 1.5
@@ -127,13 +126,10 @@ $menuToggleBarSpacing = 10px
   &__items
     display flex
     flex-direction column
-    padding-left 0
-    overflow hidden
-    align-items center
     padding: 0 $paddingBase
+    margin-top $paddingBig
 
   &__item
-    width 100%;
     list-style-type none
     font-size $fontSizeBig
     border-bottom 1px solid $light
@@ -144,7 +140,6 @@ $menuToggleBarSpacing = 10px
 
     &:first-child
       border-top 1px solid $light
-      margin-top $paddingBig
 
   .menu-enter-to, .menu-leave
     transform translateX(0)

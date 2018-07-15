@@ -28,7 +28,6 @@ export default {
 @import 'nib'
 
 .page-home
-  clearfix()
   border-radius 1px 2px / 3px 4px
 
   &__presentation

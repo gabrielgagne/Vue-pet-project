@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <welcome-message name="list" />
+  <div class="page-list">
+    <span />
   </div>
 </template>
 

@@ -33,7 +33,7 @@ export default {
 
 <style lang="stylus" scoped>
 .main-menu-item
-  color inherit
+  color $light
   text-decoration none
   padding $paddingBase
   display block

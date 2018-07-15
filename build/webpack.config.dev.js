@@ -25,6 +25,9 @@ module.exports = merge(baseConfig, {
     quiet: true,
     watchOptions: {
       poll: true
+    },
+    historyApiFallback: {
+      index: 'index.html'
     }
   },
 
